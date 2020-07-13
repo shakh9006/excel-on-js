@@ -1,0 +1,20 @@
+{
+  "name": "excel",
+  "version": "1.0.0",
+  "description": "Pure JavaScript Excel Application",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "webpack",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shakh9006/excel-on-js.git"
+  },
+  "author": "Shakh Nematov <waxboz.nematov@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shakh9006/excel-on-js/issues"
+  },
+  "homepage": "https://github.com/shakh9006/excel-on-js#readme"
+}
