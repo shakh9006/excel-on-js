@@ -1,3 +1,3 @@
-import module from './module'
+import './scss/style.scss'
 
-console.log('compiled....!');
+console.log('work');
