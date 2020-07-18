@@ -1,0 +1,30 @@
+.excel__formula {
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: $toolbar-height + $header-height;
+  height: $formula-height;
+  border-bottom: 1px solid $border-color;
+  outline: none;
+  @include verticalCenter();
+
+  .info {
+    font-size: 18px;
+    font-style: italic;
+    text-align: center;
+    width: $info-cell-width;
+    border-right: 1px solid $border-color;
+  }
+
+  .input {
+    width: 100%;
+    height: 100%;
+    color: #000;
+    font-size: 12px;
+    outline: none;
+    padding: 4px;
+    @include verticalCenter();
+  }
+
+}
