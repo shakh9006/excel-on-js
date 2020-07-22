@@ -40,6 +40,41 @@ class Dom {
         }
         this.$el.append(node)
     }
+
+    closest(selector) {
+        return $(this.$el.closest(selector))
+    }
+
+    findAll(selector) {
+        return this.$el.querySelectorAll(selector)
+    }
+
+    allClosest(selector) {
+        return Array.from(this.findAll(selector))
+            .map(element => $(element))
+    }
+
+    dataset(dataName) {
+        return this.$el.dataset[dataName]
+    }
+
+    getCoords() {
+        return this.$el.getBoundingClientRect()
+    }
+
+    addClass(className) {
+        this.$el.classList.add(className)
+        return this
+    }
+
+    removeClass(className) {
+        this.$el.classList.remove(className)
+        return this
+    }
+
+    css(styles = {}) {
+        Object.keys(styles).forEach(key => this.$el.style[key] = styles[key])
+    }
 }
 
 export function $(selector) {
@@ -53,3 +88,10 @@ $.create = (tagName, className = '') => {
     }
     return $($el);
 }
+
+// 368 msScripting
+// 2175 msRendering
+// 1210 msPainting
+// 962 msSystem
+// 951 msIdle
+// 5666 msTotal
