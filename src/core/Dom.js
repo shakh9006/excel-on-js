@@ -34,6 +34,13 @@ class Dom {
         return this.$el.outerHTML
     }
 
+    text(text) {
+        if (typeof text === 'string') {
+            this.$el.textContent = text
+        }
+        return this.$el.textContent
+    }
+
     append(node) {
         if (node instanceof Dom) {
             node = node.$el
@@ -43,6 +50,10 @@ class Dom {
 
     closest(selector) {
         return $(this.$el.closest(selector))
+    }
+
+    find(selector) {
+        return $(this.$el.querySelector(selector))
     }
 
     findAll(selector) {
@@ -58,8 +69,26 @@ class Dom {
         return this.$el.dataset[dataName]
     }
 
+    id(parse) {
+
+        if (parse) {
+            const split = this.dataset('id').split(':')
+            return {
+                row: split[0],
+                col: split[1]
+            }
+        }
+
+        return this.dataset('id')
+    }
+
     getCoords() {
         return this.$el.getBoundingClientRect()
+    }
+
+    focus() {
+        this.$el.focus()
+        return this
     }
 
     addClass(className) {
@@ -88,10 +117,3 @@ $.create = (tagName, className = '') => {
     }
     return $($el);
 }
-
-// 368 msScripting
-// 2175 msRendering
-// 1210 msPainting
-// 962 msSystem
-// 951 msIdle
-// 5666 msTotal
