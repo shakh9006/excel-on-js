@@ -6,6 +6,22 @@ export class ExcelComponent extends DomListener {
         const listeners = options.listeners || {};
         super($root, listeners)
         this.name = options.name
+        this.emitter = options.emitter
+        this.prepare()
+        this.unsubs = []
+    }
+
+    prepare() {
+
+    }
+
+    $emit(event, ...args) {
+        this.emitter.emit(event, ...args)
+    }
+
+    $on(event, fn) {
+       const unsub = this.emitter.subscribe(event, fn)
+        this.unsubs.push(unsub)
     }
 
     toHtml() { // return template
@@ -18,5 +34,6 @@ export class ExcelComponent extends DomListener {
 
     destroy() {
         this.removeEventListeners()
+        this.unsubs.forEach(unsub => unsub())
     }
 }
